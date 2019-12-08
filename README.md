@@ -9,3 +9,9 @@ Chapter 3 of statistical learning covers various regression principles.
 3.  Multivariate Regression
 4.  Non linearities and Interactions
 5.  Qualitative data management
+
+## Classification
+
+Chapter 4 covering many concepts under classification.
+1.  Z-statistic
+2.  Logistic Regression
