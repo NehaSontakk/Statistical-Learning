@@ -1,5 +1,5 @@
 # Statistical-Learning
-Introduction to statistical learning and elements of statistical learning covered, along with the Stanford course on the same.
+Introduction to statistical learning and elements of statistical learning covered, along with the Stanford course on the same. I highly recommend this course to understand the statistical basics of machine learning algorithms. It also covers many R concepts and was a great way to brush up on my R skills.
 
 ## Regression
 
