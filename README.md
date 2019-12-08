@@ -15,3 +15,17 @@ Chapter 3 of statistical learning covers various regression principles.
 Chapter 4 covering many concepts under classification.
 1.  Z-statistic
 2.  Logistic Regression
+
+
+
+
+
+
+
+
+
+
+
+### Additional Resources
+
+T- statistic vs Z- statistic: https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/more-significance-testing-videos/v/z-statistics-vs-t-statistics 
