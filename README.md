@@ -14,7 +14,7 @@ Chapter 3 of statistical learning covers various regression principles.
 
 Chapter 4 covering many concepts under classification.
 1.  Z-statistic
-2.  Logistic Regression
+2.  Logistic Regression : Classification(Logistic_Regression).R file
 
 
 
