@@ -1,7 +1,7 @@
 # Statistical-Learning
 Introduction to Statistical Learning and Elements of Statistical Learning covered, along with the Stanford course on the same; taught by Rob Tibshirani and Trevor Hastie. I highly recommend this course to understand the statistical concepts behind machine learning algorithms. There are continuous quizzes and coding assignments that helped me brush up on my R skills as well.
 
-## Regression
+### Regression
 
 Chapter 3 of statistical learning covers various regression principles.
 1.  Metrics : t-statistic, p-values, confidence intervals.
@@ -9,17 +9,19 @@ Chapter 3 of statistical learning covers various regression principles.
 3.  Multivariate Regression
 4.  Non linearities and Interactions
 5.  Qualitative data management
-6.  __Regression.R__:All the above
 
-## Classification
+### Classification
 
 Chapter 4 covering many concepts under classification.
 1.  Z-statistic
-2.  Logistic Regression : __Classification(Logistic_Regression).R__ file
+2.  Logistic Regression
 3.  Linear Discriminant Analysis
 4.  K-Nearest Neighbor Classification
 
-
+### Re-Sampling
+1.  Resampling Notes.pdf : Notes on resampling strategies
+2.  Cross Validation
+2.  Bootstrap
 
 
 
