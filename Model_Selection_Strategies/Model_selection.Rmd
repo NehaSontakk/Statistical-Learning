@@ -1,0 +1,154 @@
+---
+title: "Model_Selection"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Import baseball database
+We are using statistics to predict salary of players.
+```{r cars}
+library(ISLR)
+summary(Hitters)
+```
+
+## Remove missing values 
+
+```{r}
+#delete all rows with missing values
+Hitters = na.omit(Hitters)
+#check if na left
+with(Hitters,sum(is.na(Salary)))
+```
+## BEST SUBSET SELECTION
+go through all the predictors and select the best subset of models.
+For each subset size a star is put next to the important features.
+
+```{r}
+library(leaps)
+regfit.full = regsubsets(Salary~.,data=Hitters)
+summary(regfit.full)
+```
+Default subset size is 8 but we can push it up to 19 (as many variables as we have)
+Cp = prediction error
+Pick the model with the minimum Cp
+```{r}
+regfit.full=regsubsets(Salary~.,data=Hitters, nvmax=19)
+reg.summary=summary(regfit.full)
+names(reg.summary)
+plot(reg.summary$cp,xlab="Number of Variables",ylab="Cp")
+which.min(reg.summary$cp)
+points(10,reg.summary$cp[10],pch=20,col="red")
+```
+
+There is a particular library to plot these graphs
+
+Black indicates in variables and white squares are out
+```{r}
+plot(regfit.full,scale="Cp")
+#coefficients of the 10th model
+coef(regfit.full,10)
+```
+FORWARD STEPWISE SELECTION
+
+Use regsubset with method=forward
+```{r}
+regfit.fwd=regsubsets(Salary~.,data=Hitters,nvmax=19,method="forward")
+summary(regfit.fwd)
+plot(regfit.fwd,scale="Cp")
+```
+
+
+###
+Model Selection Using a Validation Set
+
+Make a training and validation set, so that we can choose a good subset model.
+
+```{r}
+dim(Hitters)
+set.seed(1)
+#seq creates a sequence from 1 to n
+#180 is indexes of observations
+train=sample(seq(263),180,replace=FALSE)
+train
+regfit.fwd=regsubsets(Salary~.,data=Hitters[train,],nvmax=19,method="forward")
+```
+there are 19 models, so we set up some vectors to record the errors
+```{r}
+val.errors=rep(NA,19)
+#create a matrix where training data is removed from set
+x.test=model.matrix(Salary~.,data=Hitters[-train,])
+#for all the parameters
+for(i in 1:19){
+  #size of sample is i
+  coefi=coef(regfit.fwd,id=i)
+  pred=x.test[,names(coefi)]%*%coefi
+  val.errors[i]=mean((Hitters$Salary[-train]-pred)^2)
+}
+plot(sqrt(val.errors),ylab="Root MSE",ylim=c(300,400),pch=19,type="b")
+points(sqrt(regfit.fwd$rss[-1]/180),col="blue",pch=19,type="b")
+legend("topright",legend=c("Training","Validation"),col=c("blue","black"),pch=19)
+```
+model prediction method for regsubset
+
+```{r}
+predict.regsubsets=function(object,newdata,id,...){
+  form=as.formula(object$call[[2]])
+  mat=model.matrix(form,newdata)
+  coefi=coef(object,id=id)
+  mat[,names(coefi)]%*%coefi
+}
+```
+
+
+
+
+
+#####
+MODEL SELECTION WITH CROSS VALIDATION
+
+10 fold cross validation
+
+```{r}
+set.seed(10)
+#take 10 samples 
+folds = sample(rep(1:10,length=nrow(Hitters)))
+folds
+table(folds)
+#make a matrix to store errors for each model on a fold
+cv.errors=matrix(NA,10,19)
+
+#two loops
+for(afold in 1:10){
+  #fit a regsubset model
+  best.fit=regsubsets(Salary~.,data=Hitters[folds!=afold,],nvmax=19,method="forward")
+  for(param in 1:19){
+    #predict the best fit from selected
+    pred=predict(best.fit,Hitters[folds==afold,],id=param)
+    cv.errors[afold,param]=mean( (Hitters$Salary[folds==afold]-pred)^2)    
+  }
+}
+rmse.cv=sqrt(apply(cv.errors,2,mean))
+plot(rmse.cv,pch=19,type="b")
+```
+its not as jittery as the validation test curve
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
