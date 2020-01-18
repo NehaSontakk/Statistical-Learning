@@ -21,10 +21,14 @@ Chapter 4 covering many concepts under classification.
 ### Re-Sampling
 1.  Resampling Notes.pdf : Notes on resampling strategies
 2.  Cross Validation
-2.  Bootstrap
+3.  Bootstrap
 
-
-
+### Model Selection Strategies
+1.  Subset Selection
+2.  Best Subset Selection
+2.  Validation Set
+3.  Forward/Backward Subset Selection
+4.  Ridge and Lasso Selection
 
 
 
