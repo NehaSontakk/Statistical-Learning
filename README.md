@@ -30,6 +30,10 @@ Chapter 4 covering many concepts under classification.
 3.  Forward/Backward Subset Selection
 4.  Ridge and Lasso Selection
 
+### Polynomials, Splines and GAMs
+Chapter 7 on nonlinear functions
+1.  Polynomials: Fitting polynomials functions and standard error bands.
+2.  Splines
 
 
 
