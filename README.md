@@ -35,10 +35,17 @@ Chapter 7 on nonlinear functions
 1.  Polynomials: Fitting polynomials functions and standard error bands.
 2.  Splines
 
+### Polynomials, Splines and GAMs
+Chapter 8 on learning using trees
+1.  Decision Trees
+2.  Bagging
+3.  Out of bag sampling
+4.  Random Forests
+5.  Boosting 
 
 
 
 
 ### Additional Resources
-
+[Elements of Statistical Learning](https://web.stanford.edu/~hastie/Papers/ESLII.pdf) -Trevor Hastie, Robert Tibshirani, Jerome Friedman
 T- statistic vs Z- statistic: https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/more-significance-testing-videos/v/z-statistics-vs-t-statistics 
