@@ -48,6 +48,9 @@ Chapter 8 on learning using trees
 
 ### Resources
 [Introduction to Statistical Learning](https://www.ime.unicamp.br/~dias/Intoduction%20to%20Statistical%20Learning.pdf) -Gareth James, Daniela Witten, Trevor Hastie, Robert Tibshirani
+<br>
 [Elements of Statistical Learning](https://web.stanford.edu/~hastie/Papers/ESLII.pdf) -Trevor Hastie, Robert Tibshirani, Jerome Friedman
+<br>
+[StatLearning](https://lagunita.stanford.edu/courses/HumanitiesSciences/StatLearning/Winter2016/course/) By Robert Tibshirani, Jerome Friedman
 <br>
 [T- statistic vs Z- statistic](https://www.khanacademy.org/math/statistics-probability/significance-tests-one-sample/more-significance-testing-videos/v/z-statistics-vs-t-statistics)
