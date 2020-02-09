@@ -1,0 +1,73 @@
+---
+title: "Tree_learning"
+author: "Neha"
+date: "09/02/2020"
+output: pdf_document
+---
+```{r}
+require(ISLR)
+require(tree)
+attach(Carseats)
+summary(Carseats)
+# A histogram of the sales data column
+hist(Sales)
+# Make this binary based on distribution
+High=ifelse(Sales<=8,"No","Yes")
+#Rewrite into dataframe
+Carseats=data.frame(Carseats, High)
+```
+```{r}
+#fit a tree to the data
+#Exclude Sales --- from the right-hand side of the formula, because the response is derived from it.
+tree.carseats=tree(Sales~.-High,data=Carseats)
+#summarize the tree data
+summary(tree.carseats)
+plot(tree.carseats)
+#add text to tree splits
+text(tree.carseats,pretty=0)
+```
+For a detailed summary of the tree, print it:
+```{r}
+tree.carseats
+```
+create a training and test set (250,150) split of the 400 observations, grow the tree on the training set, and evaluate its performance on the test set.
+```{r}
+set.seed(1001)
+#Take 250 training samples
+train=sample(1:nrow(Carseats),250)
+#train a tree model
+tree.carseats=tree(High~.-Sales,Carseats,subset=train)
+#Plot the tree
+plot(tree.carseats);text(tree.carseats,pretty=0)
+#Predict on remaining data
+tree.pred=predict(tree.carseats,Carseats[-train,],type="class")
+with(Carseats[-train,],table(tree.pred,High))
+#final accuracy
+(72+33)/150
+```
+
+PRUNING TREE
+This tree was grown to full depth, and might be too variable. We now use CV to prune it.
+```{r}
+#using the cross validation method
+cv.carseats=cv.tree(tree.carseats,FUN=prune.misclass)
+cv.carseats
+plot(cv.carseats)
+#Missclassification errors
+prune.carseats=prune.misclass(tree.carseats,best=13)
+plot(prune.carseats)
+text(prune.carseats,pretty=0)
+```
+
+Missclassification is jumpy because there are many cross validation points.
+To prune optimally, pick a middle value from graph, low error. (Like 13)
+So the printed tree now has size 13 and is much easier to read.
+
+We can now test how the pruned tree does on the test data.
+
+```{r}
+tree.pred=predict(prune.carseats,Carseats[-train,],type="class")
+with(Carseats[-train,],table(tree.pred,High))
+(72+32)/150
+```
+It has done about the same as our original tree. So pruning did not hurt us wrt misclassification errors, and gave us a simpler tree.
