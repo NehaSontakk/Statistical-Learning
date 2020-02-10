@@ -35,7 +35,7 @@ Chapter 7 on nonlinear functions
 1.  Polynomials: Fitting polynomials functions and standard error bands.
 2.  Splines
 
-### Polynomials, Splines and GAMs
+### Tree Learning Methods
 Chapter 8 on learning using trees
 1.  Decision Trees
 2.  Bagging
