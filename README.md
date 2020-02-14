@@ -1,5 +1,5 @@
 # Statistical-Learning
-Introduction to Statistical Learning and Elements of Statistical Learning covered, along with the Stanford course on the same; taught by Rob Tibshirani and Trevor Hastie. I highly recommend this course to understand the statistical concepts behind machine learning algorithms. There are continuous quizzes and coding assignments that helped me brush up on my R skills as well.
+Introduction to Statistical Learning and Elements of Statistical Learning book chapters covered, along with the Stanford course on the same; taught by Rob Tibshirani and Trevor Hastie. I highly recommend this course to understand the statistical concepts behind machine learning algorithms. There are continuous quizzes and coding assignments that helped me brush up on my R skills as well.<br>Here is my course completion [certificate](https://prod-cert-bucket.s3.amazonaws.com/downloads/ec263c9cc95e44bf939e4c24cd8f1405/Statement.pdf).
 
 ### Regression
 
